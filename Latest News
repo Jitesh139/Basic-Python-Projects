@@ -1,0 +1,11 @@
+import requests
+
+quary=input("enter the topic of the news")
+api="96bcab7d8ebc4fb09e4f54368b164c4d"
+url=f"https://newsapi.org/v2/everything?q={quary}&from=2025-09-12&sortBy=publishedAt&apiKey={api}"
+c=requests.get(url)
+data=c.json()
+articles=data["articles"]
+for index,i in enumerate( articles):
+    print(index+1,i["title"],i["url"])
+    print("\n***************************\n")
