@@ -1,0 +1,27 @@
+from selenium.webdriver.common.keys import Keys 
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from time import sleep 
+
+browser=webdriver.Chrome()
+browser.maximize_window() 
+sleep(2) 
+wait = WebDriverWait(browser, 10)
+browser.get("https://youtube.com") 
+sleep(3)
+element=browser.find_element("name","search_query") 
+a="katamoi" 
+for i in range(0,len(a)):
+    element.send_keys(a[i]) 
+    sleep(0.1) 
+element.send_keys(Keys.ENTER) 
+sleep(2)
+video_title = wait.until(EC.element_to_be_clickable((By.ID, "video-title")))
+video_title.click()
+sleep(1)
+
+full_screen=browser.find_element("xpath",'//*[@id="movie_player"]/div[28]/div[2]/div[2]/div[2]/button[3]') 
+full_screen.click()
+sleep(240)
